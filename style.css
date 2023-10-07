@@ -1,0 +1,181 @@
+html {
+  background-image: url("Background-full_page.png");
+  background-origin: content-box;
+  background-repeat: no-repeat, repeat;
+  height: 200vh;
+  box-sizing: border-box;
+  /* pixels to viewport formula = pixels / viewport total width x 100 */
+  /* Pixels to ww for 1920p screen |18 = 0.94vw|  |22 = 1.15vw|  |32 = 1.67vw|  |48 = 2.5vw| */
+  /* "calc" for preventing the text from getting too small. .27 multiplication for vw */
+  /* 0,01388 */
+  --18px: 0.95vw;
+  --22px: 1.15vw;
+  --32px: 1.67vw;
+  --48px: 2.5vw;
+}
+
+@font-face {
+  font-family: "regular";
+  src: url("./Saira-Regular.ttf");
+}  
+@font-face {
+  font-family: "medium";
+  src: url("./Saira-Medium.ttf");
+}
+@font-face {
+  font-family: "semibold";
+  src: url("./Saira-SemiBold.ttf");
+}  
+@font-face {
+  font-family: "bold";
+  src: url("./Saira-bold.ttf");
+}
+
+
+body {
+  color: black;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  font-size: calc(15px + 0.390625vw); /* perfect font size. Source: matthewjamestaylor.com/responsive-font-size */
+  /* 320w = 16px, 768w = 18px, 1024w = 19px, 1280w = 20px, 1526w = 21px, 1920w = 23px, 2560w = 25px */
+  /* font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300))); */
+/* line above would make: 14px is the minimum size at the smallest viewport width of 300px and where 26px is the maximum size at the largest viewport width of 1600px */
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-family: "semibold";
+  margin-top: 5vw;
+  margin-bottom: 5vw;;
+}
+
+nav a {
+  margin: 3vw;
+  font-size: clamp(22px, 9px);
+  /* font-size: var(--22px); */
+}
+
+a {
+  color: black;
+}
+
+.big-hero-text {
+  font-family: "medium";
+  font-size: clamp(16px, 48px, 48px);
+  /* font-size: var(--48px); */
+}
+
+.grid-steps {
+  width: 100%;
+  height: 50vh;
+  display: grid;
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+  grid-template-columns: repeat(1fr);
+  grid-template-rows: repeat(1fr);
+  grid-template-areas:
+  "a1 b1 c1"
+  "a2 b2 c2"
+  "a3 b3 c3";
+}
+
+.hero-text-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 36.45vw; 
+  height: 150px;
+  display: flex;
+  align-items: center;
+}
+
+.white-blur-bg {
+  background: rgba(255, 255, 255, 0.9);
+  filter: blur(30px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+
+.hero-text-1, .hero-text-2, .hero-text-3 {
+  font-family: "regular";
+  font-size: clamp(12px, 90%, 22px);
+  /* font-size: var(--22px); */
+  text-align: center;
+  /* max-width: 32vw; 614px */
+}
+
+.hero-text-container-1 {
+  grid-area: c1;
+}
+.hero-text-container-2 {
+  grid-area: a2;
+}
+.hero-text-container-3 {
+  grid-area: c3;
+}
+
+#why-me {
+  display: grid;
+}
+
+.why-card:nth-child(1) {
+  font-size: 110%;
+  background-color: green;
+}
+.why-card:nth-child(2) {
+  white-space: pre;
+  background-color: orange;
+}
+
+/* 1920 - 192 pattern: 1728 1536 1344 1152 960 768 576 384 192*/
+/*@media screen and (max-width: 1728px) {
+  * {font-size: 102% !important;}
+}
+@media screen and (max-width: 1536px) {
+  * {font-size: 104% !important;}
+}
+@media screen and (max-width: 1344px) {
+  * {font-size: 106% !important;}
+}
+@media screen and (max-width: 1152px) {
+  * {font-size: 108% !important;}
+}
+@media screen and (max-width: 960px) {
+  * {font-size: 106% !important;}
+}
+@media screen and (max-width: 768px) {
+  * {font-size: 104% !important;}
+}
+@media screen and (max-width: 576px) {
+  * {font-size: 102% !important;}
+  nav {flex-direction: column;}
+}
+@media screen and (max-width: 384px) {
+  * {font-size: 100% !important;}
+  .grid-steps {margin-top: 80px;}
+}*/
+@media screen and (max-width: 336px) {
+  * {font-size: 98% !important;}
+  body {overflow-x: hidden;}
+  .hero-text-container-1 {grid-area: a1;}
+  .hero-text-container-2 {grid-area: a2;}
+  .hero-text-container-3 {grid-area: a3;}
+  .grid-steps * {margin-top: 40px; width: 100vw;}
+  .hero-text-container {
+    /* margin-top: 20vh; */
+    margin-bottom: 10vh;
+  }
+  #why-me {
+    margin-top: 120vw;
+  }
+}
+@media screen and (max-width: 276px) {
+  /* .grid-steps * {margin-right: 40px; margin-top: 60px;} */
+}
+
