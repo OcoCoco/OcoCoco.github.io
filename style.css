@@ -122,15 +122,20 @@ a {
 
 #why-me {
   display: grid;
+  grid-template-areas: 
+    "a1 a2 a3"
+    "b1 b2 b3"
+    ;
+  gap: clamp(1px, 50px, 100px);
 }
 
 .why-card:nth-child(1) {
-  font-size: 110%;
-  background-color: green;
+  /* font-size: 110%; */
+  /* background-color: green; */
 }
 .why-card:nth-child(2) {
-  white-space: pre;
-  background-color: orange;
+  /* white-space: pre; */
+  /* background-color: orange; */
 }
 
 /* 1920 - 192 pattern: 1728 1536 1344 1152 960 768 576 384 192*/
@@ -160,6 +165,15 @@ a {
   * {font-size: 100% !important;}
   .grid-steps {margin-top: 80px;}
 }*/
+@media screen and (max-width: 400px) {
+  .big-hero-text {white-space: normal !important;max-width: 80%;}
+  main {display: flex; flex-direction: column;}
+  .grid-steps {display: flex; flex-direction: column;}
+  .hero-text-container {margin: 50px}
+  .why-me-heading {margin-top: 150vw!important; text-align: left !important;}
+  #why-me {display: flex; flex-direction: column; margin-top: 10vh;}
+  #why-me * {max-width: 80%;}
+}
 @media screen and (max-width: 336px) {
   * {font-size: 98% !important;}
   body {overflow-x: hidden;}
@@ -170,9 +184,6 @@ a {
   .hero-text-container {
     /* margin-top: 20vh; */
     margin-bottom: 10vh;
-  }
-  #why-me {
-    margin-top: 120vw;
   }
 }
 @media screen and (max-width: 276px) {
